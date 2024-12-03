@@ -1,0 +1,4 @@
+- name: Set dns server
+  ansible.builtin.template:
+    src: resolv.conf
+    dest: /etc/

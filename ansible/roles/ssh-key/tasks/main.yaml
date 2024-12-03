@@ -1,0 +1,26 @@
+- name: create .ssh directory 
+  file: 
+      path: /home/{{ your_host}}/.ssh
+      state: directory
+      owner: {{your_host}}
+      group: {{your_host}}
+      mode:  '0700'
+        
+- name: Generate SSH key pair
+  command: ssh-keygen -q -t rsa -b 2048 -f /home/kaza/.ssh/id_rsa -C {{your_email}}  -N ""
+  args: 
+     creates: /home/{{your_host}}/.ssh/id_rsa
+     
+- name: Set ownership and permissions for SSH keys
+  file: 
+         path: /home/{{your_host}}/.ssh/id_rsa
+         owner: {{your_host}}
+         group: {{your_host}}
+         mode: '0700'
+         
+- name: Set ownership and permissions for public key
+  file:
+      path: /home/{{your_host}}/.ssh/id_rsa.pub
+      owner: {{your_host}}
+      group: {{your_host}}
+      mode: '0644' 

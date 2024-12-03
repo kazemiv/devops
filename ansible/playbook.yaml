@@ -1,0 +1,10 @@
+- name: Install ansible requirements on local
+  hosts: Debian
+  become: true
+  become_method: sudo
+  roles:
+    - { role: timezone, tags: [timezone] }
+    - { role: dns-server, tags: [dns-server] }
+    - { role: apt_repository, tags: [apt_repository] }
+    - { role: softwere , tags: [softwere] }
+ 

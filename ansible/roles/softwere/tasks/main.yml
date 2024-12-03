@@ -1,0 +1,14 @@
+---
+  - include_tasks: install-vscode.yml 
+    tags: 
+    - vscode
+   
+  - include_tasks: install-pkg.yml 
+    tags:
+    - pkg  
+
+  - include_tasks: install-pkg.yml 
+    tags:
+    - docker
+
+
